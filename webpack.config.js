@@ -3,7 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
-const baseUrl = path.resolve(__dirname, 'dist');
+const baseUrl = path.resolve(__dirname, 'ericferreira1992.github.io');
 
 let config = {
 	entry: './src/index.js',

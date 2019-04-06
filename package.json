@@ -4,7 +4,7 @@
     "scripts": {
         "build": "npx webpack --mode production",
         "server": "npx webpack-dev-server --watch true --devtool source-map --mode development",
-        "deploy-git-pages": "npm run build && node ./node_modules/gh-pages/bin/gh-pages -d dist"
+        "deploy-git-pages": "npm run build && node ./node_modules/gh-pages/bin/gh-pages -d ericferreira1992.github.io"
     },
     "private": true,
     "dependencies": {
