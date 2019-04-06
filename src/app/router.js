@@ -1,6 +1,8 @@
 export default class Router {
     gtag () { dataLayer.push(arguments); };
 
+    gaID = 'UA-137851769-1';
+
     listening = null;
     currentRoute = '';
     
@@ -21,7 +23,7 @@ export default class Router {
     constructor() {
         window.dataLayer = window.dataLayer || [];
         this.gtag('js', new Date());
-        this.gtag('config', 'UA-137851769-1');
+        this.gtag('config', this.gaID);
     }
 
     listen() {
@@ -41,8 +43,7 @@ export default class Router {
         if (this.resolveFn) {
             let route = this.routes.find(x => x.path === this.pureRoute);
             if (route) {
-                this.gtag('set', 'page', '/' + this.pureRoute);
-                this.gtag('send', this.pureRoute);
+                this.gtag('config', this.gaID, {'page_path': '/' + this.pureRoute});
                 this.resolveFn(route.id);
             }
             else {
