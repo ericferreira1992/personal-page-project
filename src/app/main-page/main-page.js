@@ -2,6 +2,7 @@ import AboutMePage from  '../about-me/about-me.js';
 import MySkillsPage from  '../my-skills/my-skills.js';
 import MyWorksPage from  '../my-works/my-works.js';
 import TalkMePage from  '../talk-me/talk-me.js';
+import Router from  '../router.js';
 import * as WOW from  'wow.js/dist/wow';
 
 export class MainPage {
@@ -23,10 +24,15 @@ export class MainPage {
 
     loadingCurrentPage = false;
 
+    router;
+
     constructor() {
         this.defineStylesVariables();
         this.render();
         window.addEventListener('resize', this.defineStylesVariables.bind(this));
+
+        this.router = new Router();
+        this.router.listen().onResolve(this.selectPage.bind(this));
     };
 
     render() {
@@ -53,28 +59,37 @@ export class MainPage {
         document.documentElement.style.setProperty('--scale-general', this.generalScale);
     };
 
+    goRoute(route) {
+        this.router.redirect(route);
+    }
+
     selectPage(pageNumber) {
-        if (this.currentPageNumber === 0 && !this.loadingCurrentPage) {
-            var gereralPageEl = this.getGeneralPage();
-        
-            if (this.currentPageNumber > 0)
-                gereralPageEl.classList.remove('selected-page-0' + this.currentPageNumber);
-            this.currentPageNumber = pageNumber;
-
-            gereralPageEl.classList.add('selected-page-0' + pageNumber);
-
-            var closeCurrentPageEl = document.createElement('div');
-            var positionClass = pageNumber === 1 ? 'bottom-left' : (pageNumber === 2 ? 'top-left' : (pageNumber === 3 ? 'top-right' : 'bottom-right'));
-            closeCurrentPageEl.classList.add('close-current-page', positionClass, 'animated', 'fadeIn');
-            closeCurrentPageEl.onclick = this.exitPage.bind(this);
-            document.body.prepend(closeCurrentPageEl);
-
-            this.loadCurrentPage();
+        if (!this.loadingCurrentPage) {
+            if (pageNumber && !this.currentPage) {
+                let gereralPageEl = this.getGeneralPage();
+            
+                if (this.currentPageNumber > 0)
+                    gereralPageEl.classList.remove('selected-page-0' + this.currentPageNumber);
+                this.currentPageNumber = pageNumber;
+    
+                gereralPageEl.classList.add('selected-page-0' + pageNumber);
+    
+                let closeCurrentPageEl = document.createElement('div');
+                let positionClass = pageNumber === 1 ? 'bottom-left' : (pageNumber === 2 ? 'top-left' : (pageNumber === 3 ? 'top-right' : 'bottom-right'));
+                closeCurrentPageEl.classList.add('close-current-page', positionClass, 'animated', 'fadeIn');
+                closeCurrentPageEl.onclick = () => this.goRoute('');
+                document.body.prepend(closeCurrentPageEl);
+    
+                this.loadCurrentPage();
+            }
+            else if (this.currentPage) {
+                this.exitPage();
+            }
         }
     };
 
     exitPage() {
-        if (this.currentPageNumber > 0 && !this.loadingCurrentPage) {
+        if (this.currentPage !== null && !this.loadingCurrentPage) {
 
             let closeCurrentPageEl = document.body.querySelector('.close-current-page');
 
@@ -88,7 +103,7 @@ export class MainPage {
                 this.currentPage && this.currentPage.element.remove();
                 this.currentPage = null;
 
-                var gereralPageEl = this.getGeneralPage();
+                let gereralPageEl = this.getGeneralPage();
         
                 gereralPageEl.classList.remove('selected-page-0' + this.currentPageNumber);
                 this.currentPageNumber = 0;
@@ -107,19 +122,19 @@ export class MainPage {
     loadCurrentPage() {
         switch(this.currentPageNumber) {
             case 1: {
-                this.currentPage = new AboutMePage();
+                this.currentPage = new AboutMePage(this);
                 break;
             }
             case 2: {
-                this.currentPage = new MySkillsPage();
+                this.currentPage = new MySkillsPage(this);
                 break;
             }
             case 3: {
-                this.currentPage = new TalkMePage();
+                this.currentPage = new TalkMePage(this);
                 break;
             }
             case 4: {
-                this.currentPage = new MyWorksPage();
+                this.currentPage = new MyWorksPage(this);
                 break;
             }
         }
@@ -131,7 +146,7 @@ export class MainPage {
         if (this.currentPage) {
             this.loadingCurrentPage = true;
             this.loadTemplate(this.currentPage.templateUrl, (textHtml) => {
-                var currentPageEl = document.createElement('div');
+                let currentPageEl = document.createElement('div');
                 currentPageEl.classList.add('current-page', 'animated', 'fadeIn');
                 currentPageEl.innerHTML = textHtml;
                 document.body.append(currentPageEl);
@@ -149,7 +164,7 @@ export class MainPage {
     }
 
     loadTemplate(templateUrl, onload) {
-        var client = new XMLHttpRequest();
+        let client = new XMLHttpRequest();
         client.open('GET', templateUrl);
 
         client.onloadend = () => {
