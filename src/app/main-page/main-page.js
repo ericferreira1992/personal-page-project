@@ -26,6 +26,8 @@ export class MainPage {
 
     router;
 
+    get isMobile() { return window.innerWidth < 1000; }
+
     constructor() {
         this.defineStylesVariables();
         this.render();
@@ -39,6 +41,15 @@ export class MainPage {
         this.loadTemplate(this.templateUrl, (textHtml) => {
             document.body.insertAdjacentHTML('afterbegin', textHtml);
         });
+
+        this.onInit();
+    }
+
+    onInit() {
+        setTimeout(() => {
+            let divisions = document.querySelector('.main-divisions');
+            divisions.classList.add('main-divisions-rendered');
+        }, 500);
     }
 
     defineStylesVariables() {
@@ -96,8 +107,8 @@ export class MainPage {
             closeCurrentPageEl && closeCurrentPageEl.classList.remove('fadeIn');
             closeCurrentPageEl && closeCurrentPageEl.classList.add('fadeOut');
 
-            this.currentPage && this.currentPage.element.classList.remove('fadeIn');
-            this.currentPage && this.currentPage.element.classList.add('fadeOut');
+            this.currentPage && this.currentPage.element.classList.remove(this.isMobile ? 'jackInTheBox' : 'fadeIn');
+            this.currentPage && this.currentPage.element.classList.add(this.isMobile ? 'zoomOut' : 'fadeOut');
 
             setTimeout(() => {
                 this.currentPage && this.currentPage.element.remove();
@@ -107,6 +118,9 @@ export class MainPage {
         
                 gereralPageEl.classList.remove('selected-page-0' + this.currentPageNumber);
                 this.currentPageNumber = 0;
+
+                let divisions = document.querySelector('.main-divisions');
+                divisions.classList.add('main-divisions-rendered');
 
                 setTimeout(() => {
                     closeCurrentPageEl &&  closeCurrentPageEl.remove();
@@ -122,19 +136,19 @@ export class MainPage {
     loadCurrentPage() {
         switch(this.currentPageNumber) {
             case 1: {
-                this.currentPage = new AboutMePage(this);
+                this.currentPage = new AboutMePage();
                 break;
             }
             case 2: {
-                this.currentPage = new MySkillsPage(this);
+                this.currentPage = new MySkillsPage();
                 break;
             }
             case 3: {
-                this.currentPage = new TalkMePage(this);
+                this.currentPage = new TalkMePage();
                 break;
             }
             case 4: {
-                this.currentPage = new MyWorksPage(this);
+                this.currentPage = new MyWorksPage();
                 break;
             }
         }
@@ -147,13 +161,18 @@ export class MainPage {
             this.loadingCurrentPage = true;
             this.loadTemplate(this.currentPage.templateUrl, (textHtml) => {
                 let currentPageEl = document.createElement('div');
-                currentPageEl.classList.add('current-page', 'animated', 'fadeIn');
                 currentPageEl.innerHTML = textHtml;
+                currentPageEl.classList.add('current-page', 'animated', this.isMobile ? 'jackInTheBox' : 'fadeIn');
                 document.body.append(currentPageEl);
 
                 this.currentPage.element = currentPageEl;
 
                 this.loadingCurrentPage = false;
+
+                setTimeout(() => {
+                    let divisions = document.querySelector('.main-divisions');
+                    divisions.classList.remove('main-divisions-rendered');
+                }, 400);
                 
                 setTimeout(() => {
                     let wow = new WOW({ scrollContainer: '.current-page > section' });

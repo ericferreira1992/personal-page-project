@@ -54,6 +54,10 @@ body {
             -ms-user-select: none;
 
             transition-duration: .5s;
+            
+            @media only screen and (max-width: 999px) {
+                background: $bgColor02;
+            }
 
             &:not([class*="selected-page"]) {
             }
@@ -189,6 +193,7 @@ body {
             transition-duration: .4s;
             background-repeat: no-repeat;
             background-size: 35%;
+            outline: 0;
 
             @media only screen and (min-width: 1000px) {
                 animation-delay: .4s;
@@ -296,6 +301,11 @@ body {
                 overflow-y: auto;
                 overflow-x: hidden;
                 box-sizing: border-box;
+
+                @media screen and (max-width: 999px){
+                    animation-fill-mode: both;
+                    animation-name: fadeIn;
+                }
 
                 > * {
                     position: relative;

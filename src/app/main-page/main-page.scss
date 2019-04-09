@@ -6,8 +6,6 @@
     height: 100%;
     animation-delay: .2s;
 
-
-
     $main-circle-size: 450px;
 
     @media only screen and (min-width: 1000px) {
@@ -39,13 +37,14 @@
             cursor: pointer;
             &::before {
                 content: '';
-                transition-duration: .6s;
+                transition-duration: .9s;
                 z-index: 3;
                 transform-origin: bottom right;
                 position: absolute;
                 width: calc(#{$main-circle-size / 2} - 17px);
                 height: calc(#{$main-circle-size / 2} - 17px);
                 border-radius: 100% 0 0 0;
+                transform: scale(0) translate3d(0, 0, 0);
                 bottom: 50%;
                 right: 50%;
             }
@@ -53,7 +52,7 @@
             @media only screen and (min-width: 1000px) {
                 &::after {
                     content: '';
-                    transition-duration: .6s;
+                    transition-duration: .9s;
                     z-index: 4;
                     transform-origin: bottom right;
                     position: absolute;
@@ -78,6 +77,10 @@
                 text-align: center;
                 transform: translate(-50%, -50%) translate3d(0,0,0);
 
+                @media only screen and (max-width: 999px) {
+                    opacity: 0;
+                }
+
                 &::before {
                     transition-duration: .4s;
                     content: '';
@@ -87,6 +90,10 @@
                     height: 55px;
                     background-repeat: no-repeat;
                     background-position: center;
+
+                    @media only screen and (max-width: 999px) {
+                        opacity: 0;
+                    }
                 }
 
                 > span {
@@ -95,9 +102,6 @@
                     font-size: 25px;
                     line-height: 95%;
                     opacity: 0;
-                    
-                    @media only screen and (min-width: 1000px) {
-                    }
                 }
             }
     
@@ -109,17 +113,17 @@
                         background-color: $colorAlternative01;
                         transform: rotate(45deg) translate3d(0,0,0);
                     }
-                }
 
-                &::after {
-                    box-shadow: 0 0 100px rgba($colorAlternative01, .5);
-                    transform: rotate(45deg) translate3d(0,0,0);
+                    &::after {
+                        box-shadow: 0 0 100px rgba($colorAlternative01, .5);
+                        transform: rotate(45deg) translate3d(0,0,0);
+                    }
                 }
 
                 @media only screen and (max-width: 999px) {
                     &::before {
                         background-color: $colorAlternative01;
-                        transform: rotate(45deg) scale(var(--scale-divisions-y)) translate3d(0,0,0);
+                        transform: rotate(45deg) scale(0) translate3d(0,0,0);
                     }
                 }
 
@@ -127,10 +131,6 @@
                     left: 50%;
                     bottom: calc(50% + 100px);
                     width: $main-circle-size / 2;
-
-                    /* @media only screen and (max-width: 999px) {
-                        padding-bottom: 55px;
-                    } */
 
                     &::before {
                         background-image: url('../img/icons/avatar.svg');
@@ -153,17 +153,17 @@
                         background-color: $colorLight;
                         transform: rotate(135deg) translate3d(0,0,0);
                     }
-                }
 
-                &::after {
-                    box-shadow: 0 0 100px rgba($colorLight, .5);
-                    transform: rotate(135deg) translate3d(0,0,0);
+                    &::after {
+                        box-shadow: 0 0 100px rgba($colorLight, .5);
+                        transform: rotate(135deg) translate3d(0,0,0);
+                    }
                 }
 
                 @media only screen and (max-width: 999px) {
                     &::before {
                         background-color: $colorLight;
-                        transform: rotate(135deg) scale(var(--scale-divisions-x)) translate3d(0,0,0);
+                        transform: rotate(135deg) scale(0) translate3d(0,0,0);
                     }
                 }
 
@@ -178,10 +178,6 @@
                     }
 
                     > span { left: 30px; }
-
-                    /* @media only screen and (max-width: 999px) {
-                        > span { left: 65px; }
-                    } */
                 }
             }
     
@@ -193,17 +189,17 @@
                         background-color: $colorAlternative02;
                         transform: rotate(225deg) translate3d(0,0,0);
                     }
-                }
 
-                &::after {
-                    box-shadow: 0 0 100px rgba($colorAlternative02, .5);
-                    transform: rotate(225deg) translate3d(0,0,0);
+                    &::after {
+                        box-shadow: 0 0 100px rgba($colorAlternative02, .5);
+                        transform: rotate(225deg) translate3d(0,0,0);
+                    }
                 }
 
                 @media only screen and (max-width: 999px) {
                     &::before {
                         background-color: $colorAlternative02;
-                        transform: rotate(225deg) scale(var(--scale-divisions-y)) translate3d(0,0,0);
+                        transform: rotate(225deg) scale(0) translate3d(0,0,0);
                     }
                 }
 
@@ -211,20 +207,12 @@
                     left: 50%;
                     top: calc(50% + 155px);
                     width: $main-circle-size / 2;
-
-                    /* @media only screen and (max-width: 999px) {
-                        padding-top: 130px;
-                    } */
                     
                     &::before {
                         background-image: url('../img/icons/letter.svg');
                     }
 
                     > span { top: 0; }
-
-                    /* @media only screen and (max-width: 999px) {
-                        > span { top: 80px; }
-                    } */
                 }
             }
     
@@ -236,17 +224,17 @@
                         background-color: $bgColor01;
                         transform: rotate(-45deg) translate3d(0,0,0);
                     }
-                }
 
-                &::after {
-                    box-shadow: 0 0 100px rgba(95, 95, 95, .5);
-                    transform: rotate(-45deg) translate3d(0,0,0);
+                    &::after {
+                        box-shadow: 0 0 100px rgba(95, 95, 95, .5);
+                        transform: rotate(-45deg) translate3d(0,0,0);
+                    }
                 }
 
                 @media only screen and (max-width: 999px) {
                     &::before {
                         background-color: $bgColor01;
-                        transform: rotate(-45deg) scale(var(--scale-divisions-x)) translate3d(0,0,0);
+                        transform: rotate(-45deg) scale(0) translate3d(0,0,0);
                     }
                 }
 
@@ -263,10 +251,6 @@
                     }
 
                     > span { right: 30px; }
-
-                    /* @media only screen and (max-width: 999px) {
-                        > span { right: 65px; }
-                    } */
                 }
             }
 
@@ -328,6 +312,48 @@
                 }
             }
         }
+
+        &.main-divisions-rendered {
+            @media only screen and (max-width: 999px) {
+                > section {
+
+                    > div {
+                        opacity: 1;
+                        
+                        &::before {
+                            opacity: 1;
+                        }
+                    }
+
+                    &:nth-child(1) {
+                        &::before {
+                            background-color: $colorAlternative01;
+                            transform: rotate(45deg) scale(var(--scale-divisions-y)) translate3d(0,0,0);
+                        }
+                    }
+                    
+                    &:nth-child(2) {
+                        &::before {
+                            background-color: $colorLight;
+                            transform: rotate(135deg) scale(var(--scale-divisions-x)) translate3d(0,0,0);
+                        }
+                    }
+                    &:nth-child(3) {
+                        &::before {
+                            background-color: $colorAlternative02;
+                            transform: rotate(225deg) scale(var(--scale-divisions-y)) translate3d(0,0,0);
+                        }
+                    }
+                    &:nth-child(4) {
+                        &::before {
+                            background-color: $bgColor01;
+                            transform: rotate(-45deg) scale(var(--scale-divisions-x)) translate3d(0,0,0);
+                        }
+                    }
+
+                }
+            }
+        }
     }
 
     .main-photo-circle {
@@ -352,6 +378,7 @@
             background-image: url('../img/eric_ferreira.svg');
             background-repeat: no-repeat;
             background-position: center;
+            animation-delay: .4s;
         }
 
         > img {

@@ -3,6 +3,10 @@
     $textColor: $bgColor02;
 
     background: $color;
+    padding-bottom: 120px;
+    @media only screen and (max-width: 999px) {
+        padding-bottom: 160px;
+    }
 
     &:before {
         right: -25%;
@@ -115,7 +119,6 @@
             height: 632px;
             width: 100%;
             max-width: 632px;
-            margin-bottom: 80px;
 
             .title-image {
                 z-index: 2;

@@ -3,6 +3,10 @@
     $textColor: $bgColor02;
 
     background: $color;
+    padding-bottom: 0;
+    @media only screen and (max-width: 999px) {
+        padding-bottom: 30px;
+    }
 
     &:before {
         right: -25%;
