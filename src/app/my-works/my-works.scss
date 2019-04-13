@@ -71,7 +71,7 @@
 
             > p {
                 width: 100%;
-                font-size: 20px;
+                font-size: 18px;
                 font-weight: 100;
                 line-height: 1;
                 margin: 10px 0;
@@ -98,16 +98,45 @@
                 text-decoration: underline;
             }
 
+            &::after {
+                content: '';
+                display: table;
+                position: absolute;
+                right: 7px;
+                top: 7px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+
             &.typescript {
                 border-color: $colorTypescript;
+
+                &::after {
+                    content: 'TS';
+                    color: $colorTypescript;
+                }
             }
 
             &.csharp {
                 border-color: $colorCsharp;
+
+                &::after {
+                    content: 'C#';
+                    color: $colorCsharp;
+                }
             }
 
             &.medium {
                 border-color: $colorMedium;
+
+                &::after {
+                    content: '';
+                    width: 18px;
+                    height: 18px;
+                    background: url('../img/icons/medium.svg#colored');
+                    background-size: 18px;
+                    color: $colorMedium;
+                }
             }
         }
     }

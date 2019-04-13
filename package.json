@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "scripts": {
         "build": "npx webpack --mode production",
-        "server": "npx webpack-dev-server --watch true --devtool source-map --mode development",
+        "start": "npm run serve",
+        "serve": "npx webpack-dev-server --watch true --devtool source-map --mode development",
 		"pull": "git subtree pull --prefix=ericferreira1992.github.io/ ericferreira1992.github.io master",
 		"push": "git subtree push --prefix=ericferreira1992.github.io/ ericferreira1992.github.io master"
     },
