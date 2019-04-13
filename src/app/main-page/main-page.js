@@ -32,6 +32,7 @@ export class MainPage {
         this.defineStylesVariables();
         this.render();
         window.addEventListener('resize', this.defineStylesVariables.bind(this));
+        window.addEventListener('mousemove', this.onMouseMove.bind(this));
 
         this.router = new Router();
         this.router.listen().onResolve(this.selectPage.bind(this));
@@ -52,6 +53,35 @@ export class MainPage {
         }, 500);
     }
 
+    onMouseMove(e) {
+        let mainPhotoCircle = document.body.querySelector('.main-photo-circle');
+        if (mainPhotoCircle) {
+            if (window.innerWidth >= 1000) {
+                let rotate_X;
+                let rotate_Y;
+    
+                let windowMidPointX = window.innerWidth / 2;
+                let windowMidPointY = window.innerHeight / 2;
+    
+                rotate_X = windowMidPointX - e.pageX;
+                rotate_Y = windowMidPointY - e.pageY;
+    
+                rotate_X = Math.floor(rotate_X * .2);
+                rotate_Y = Math.floor(-rotate_Y * .2);
+    
+                if (rotate_X < -35) rotate_X = -35;
+                if (rotate_X > 35) rotate_X = 35;
+    
+                if (rotate_Y < -35) rotate_Y = -35;
+                if (rotate_Y > 35) rotate_Y = 35;
+
+                mainPhotoCircle.style.transform = `translate(-50%, -50%) translate3d(0,0,0) rotateX(${rotate_Y}deg) rotateY(${rotate_X}deg)`;
+            }
+            else
+                mainPhotoCircle.style.transform = `translate(-50%, -50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg)`;
+        }
+    }
+
     defineStylesVariables() {
         this.greaterMeasure = window.innerWidth > window.innerHeight ? window.innerWidth : window.innerHeight;
         this.minorMeasure = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth;
@@ -68,6 +98,9 @@ export class MainPage {
         document.documentElement.style.setProperty('--scale-divisions-full', this.fullDivisionsScale);
 
         document.documentElement.style.setProperty('--scale-general', this.generalScale);
+
+        if (window.innerWidth < 1000) 
+            this.onMouseMove();
     };
 
     goRoute(route) {
