@@ -368,6 +368,7 @@
         border-radius: 50%;
         box-shadow: 0 0 35px rgba(#000, .5);
         background: rgba(255,255,255, .15);
+        transition-duration: .3s;
 
         > div {
             display: block;

@@ -56,29 +56,41 @@ export class MainPage {
     onMouseMove(e) {
         let mainPhotoCircle = document.body.querySelector('.main-photo-circle');
         if (mainPhotoCircle) {
-            if (window.innerWidth >= 1000) {
-                let rotate_X;
-                let rotate_Y;
+            if (!this.currentPage && window.innerWidth >= 1000) {
+                let value_X;
+                let value_Y;
     
                 let windowMidPointX = window.innerWidth / 2;
                 let windowMidPointY = window.innerHeight / 2;
     
-                rotate_X = windowMidPointX - e.pageX;
-                rotate_Y = windowMidPointY - e.pageY;
+                value_X = windowMidPointX - e.pageX;
+                value_Y = windowMidPointY - e.pageY;
     
-                rotate_X = Math.floor(rotate_X * .2);
-                rotate_Y = Math.floor(-rotate_Y * .2);
+                let rotate_X = Math.floor(value_Y * .2);
+                let rotate_Y = Math.floor(-value_X * .2);
     
                 if (rotate_X < -35) rotate_X = -35;
                 if (rotate_X > 35) rotate_X = 35;
     
                 if (rotate_Y < -35) rotate_Y = -35;
                 if (rotate_Y > 35) rotate_Y = 35;
+    
+                let shadow_X = Math.floor(value_X * .2);
+                let shadow_Y = Math.floor(value_Y * .2);
+    
+                if (shadow_X < -10) shadow_X = -10;
+                if (shadow_X > 10) shadow_X = 10;
+    
+                if (shadow_Y < -10) shadow_Y = -10;
+                if (shadow_Y > 10) shadow_Y = 10;
 
-                mainPhotoCircle.style.transform = `translate(-50%, -50%) translate3d(0,0,0) rotateX(${rotate_Y}deg) rotateY(${rotate_X}deg)`;
+                mainPhotoCircle.style.transform = `translate(-50%, -50%) translate3d(0,0,0) rotateX(${rotate_X}deg) rotateY(${rotate_Y}deg)`;
+                mainPhotoCircle.style.boxShadow = `${shadow_X}px ${shadow_Y}px 35px rgba(0, 0, 0, .5)`;
             }
-            else
+            else {
                 mainPhotoCircle.style.transform = `translate(-50%, -50%) translate3d(0,0,0) rotateX(0deg) rotateY(0deg)`;
+                mainPhotoCircle.style.boxShadow = `0 0 35px rgba(0, 0, 0, .5)`;
+            }
         }
     }
 
@@ -100,7 +112,7 @@ export class MainPage {
         document.documentElement.style.setProperty('--scale-general', this.generalScale);
 
         if (window.innerWidth < 1000) 
-            this.onMouseMove();
+            this.onMouseMove(null);
     };
 
     goRoute(route) {
@@ -125,6 +137,7 @@ export class MainPage {
                 document.body.prepend(closeCurrentPageEl);
     
                 this.loadCurrentPage();
+                this.onMouseMove(null);
             }
             else if (this.currentPage) {
                 this.exitPage();
