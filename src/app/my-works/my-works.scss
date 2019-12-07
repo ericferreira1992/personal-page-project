@@ -108,6 +108,15 @@
                 font-weight: bold;
             }
 
+            &.angular {
+                border-color: $colorAngular;
+
+                &::after {
+                    content: 'NG';
+                    color: $colorAngular;
+                }
+            }
+
             &.typescript {
                 border-color: $colorTypescript;
 

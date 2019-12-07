@@ -31,8 +31,8 @@ export class MainPage {
     constructor() {
         this.defineStylesVariables();
         this.render();
-        window.addEventListener('resize', this.defineStylesVariables.bind(this));
-        window.addEventListener('mousemove', this.onMouseMove.bind(this));
+        // window.addEventListener('resize', this.defineStylesVariables.bind(this));
+        // window.addEventListener('mousemove', this.onMouseMove.bind(this));
 
         this.router = new Router();
         this.router.listen().onResolve(this.selectPage.bind(this));
