@@ -10,8 +10,8 @@
         "build:dev": "nb build --env=dev",
         "build:prod": "nb build --env=prod",
         "prepare-publish": "npm run build && node copy",
-        "pull": "git subtree pull --prefix=ericferreira1992.github.io ericferreira1992.github.io master",
-        "push": "git subtree push --prefix=ericferreira1992.github.io ericferreira1992.github.io master",
+        "before-publish": "git subtree pull --prefix=ericferreira1992.github.io ericferreira1992.github.io master",
+        "to-publish": "git subtree push --prefix=ericferreira1992.github.io ericferreira1992.github.io master",
         "add-subtree": "git subtree add --prefix ericferreira1992.github.io https://github.com/ericferreira1992/ericferreira1992.github.io.git master --squash"
     },
     "private": true,
