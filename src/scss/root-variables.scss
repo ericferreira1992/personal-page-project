@@ -1,0 +1,18 @@
+:root {
+	--primaryColor: #{$primaryColor};
+	--secondaryColor: #{$secondaryColor};
+	--backgroundColor: #{$backgroundColor};
+	--tertiaryColor: #{$tertiaryColor};
+	--titleColor: #{$titleColor};
+	--textColor: #{$textColor};
+	--linkColor: #{$linkColor};
+
+	// LANGUAGES
+	--tsColor: #{$tsColor};
+	--jsColor: #{$jsColor};
+	--dartColor: #{$dartColor};
+	--swiftColor: #{$swiftColor};
+	--phpColor: #{$phpColor};
+	--csharpColor: #{$csharpColor};
+}
+

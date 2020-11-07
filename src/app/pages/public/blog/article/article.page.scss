@@ -1,0 +1,138 @@
+@import 'src/scss/variables';
+
+.article-page {
+	> article {
+		margin-bottom: 40px;
+		color: var(--textColor);
+
+		> h1 {
+			color: var(--titleColor);
+			margin-bottom: 20px;
+		}
+
+		.author {
+			display: table;
+			width: 100%;
+			padding-bottom: 20px;
+			margin-bottom: 25px;
+			border-bottom: 1px var(--tertiaryColor) solid;
+
+			.img {
+				display: table-cell;
+				vertical-align: middle;
+				width: 50px;
+
+				> img {
+					display: block;
+					width: 50px;
+					height: 50px;
+					border-radius: 50%;
+					border: 3px #FFF solid;
+					box-shadow: 0 0 10px rgba(#000, .2);
+				}
+			}
+			
+			.info {
+				display: table-cell;
+				vertical-align: middle;
+				padding-left: 15px;
+				font-size: 15px;
+
+				.date {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+
+	.comments {
+		padding-top: 25px;
+		border-top: 1px var(--tertiaryColor) solid;
+
+		> h3 {
+			margin-bottom: 10px;
+		}
+
+		> ul {
+			list-style: none;
+			margin: 0 0 15px 0;
+			padding: 0;
+
+			> li {
+				display: table;
+				width: 100%;
+				padding: 15px 0;
+
+				> div {
+					> img {
+						display: block;
+						width: 34px;
+						height: 34px;
+						border-radius: 50%;
+						border: 2px #FFF solid;
+						box-shadow: 0 0 5px rgba(#000, .2);
+					}
+
+					> p {
+						font-size: 13px;
+					}
+
+					&:first-child {
+						width: 34px;
+					}
+				}
+
+				&:not(:last-child) {
+					border-bottom: 1px var(--tertiaryColor) solid;
+				}
+			}
+		}
+
+		.comment-header {
+			> p {
+				font-size: 12px;
+				line-height: .5;
+			}
+			> small {
+				font-size: 11px;
+			}
+		}
+
+		.comments-footer {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			
+			> li {
+				display: inline-block;
+				font-size: 12px;
+
+				&:not(:first-child) {
+					&::before {
+						content: '•';
+						display: initial;
+						margin-left: 1px;
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+
+		.comments {
+			border-top: none;
+			padding-top: 10px;
+		}
+	}
+
+	#new-comment-editor {
+		min-height: 40px;
+		max-height: 200px;
+		overflow: auto;
+	}
+
+	.loading {
+		text-align: center;
+		font-weight: 500;
+		color: var(--linkColor);
+	}
+}

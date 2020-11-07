@@ -1,0 +1,60 @@
+:root {
+	--animate-duration: 0.3s;
+	--animate-delay: 1s;
+	--animate-repeat: 1;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+	font-family: 'Montserrat', sans-serif;
+	height: 100%;
+	width: 100%;
+	background: var(--backgroundColor);
+	color: var(--textColor);
+	font-weight: 300;
+}
+
+body > nimble-root,
+body > nimble-root > nimble-page {
+	display: block;
+	height: 100%;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+p {
+	margin: 0 0 10px 0;
+}
+
+h1 { font-size: 32px; }
+h2 { font-size: 28px; }
+h3 { font-size: 23px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+h6 { font-size: 15px; }
+
+* {
+	box-sizing: border-box;
+}
+
+a, a:active, a:visited {
+	color: var(--linkColor);
+	text-decoration: none;
+}
+a:not(.disabled):hover {
+	text-decoration: underline;
+}
+
+a.disabled {
+	cursor: default;
+	pointer-events: none;
+}
+
+.animated {
+	animation-duration: 300ms;
+	-webkit-animation-duration: 300ms;
+}

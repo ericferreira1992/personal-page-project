@@ -1,0 +1,23 @@
+<main  class="root-page">
+	<nimble-router class="root-content"></nimble-router>
+	<footer>
+		<ul class="footer-list mb-5">
+			<li>
+				©2020 ericferreira1992
+			</li>
+			<li>
+				<a href="#">Política de Privacidade</a>
+			</li>
+			<li>
+				<a href="#">Termos de Uso</a>
+			</li>
+		</ul>
+		<ul class="social-medias">
+			<li @for="item of socialMediaItems">
+				<a [href]="item.url" target="_blank">
+					<img [src]="'assets/img/icons/' + item.imgName + '.svg#dark'" [alt]="item.name">
+				</a>
+			</li>
+		</ul>
+	</footer>
+</main>

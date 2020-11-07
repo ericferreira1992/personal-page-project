@@ -1,0 +1,147 @@
+.skills-page {
+	font-size: 20px;
+
+	h1 {
+		line-height: 95%;
+
+		> p {
+			font-size: 75%;
+		}
+	}
+
+	.skill-area {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 10px;
+		padding-bottom: 20px;
+
+		> section {
+			$circleSize: 120px;
+
+			display: table;
+			width: 50%;
+			margin-top: 10px;
+
+			.skill-info {
+				float: left;
+				margin-top: 16px;
+				padding-left: 20px;
+				width: calc(100% - #{$circleSize});
+
+				> p {
+					font-size: 15px;
+				}
+			}
+
+			.circle-area {
+				float: left;
+				position: relative;
+				display: table;
+				width: $circleSize;
+				margin: 0 -8px;
+
+				> p {
+					position: absolute;
+					display: block;
+					left: 0;
+					top: calc(50% - 3px);
+					transform: translateY(-50%);
+					width: 100%;
+					text-align: center;
+					font-size: 17px;
+
+					> * {
+						display: inline-block;
+						vertical-align: middle;
+					}
+
+					> img {
+						width: 23px;
+						height: auto;
+						margin-right: 2px;
+					}
+				}
+			}
+
+			.circle-progress {
+				width: $circleSize;
+			}
+
+			&.ts {
+				.circle-progress {
+					> path:last-child {
+						stroke: var(--tsColor);
+					}
+				}
+			}
+			&.js {
+				.circle-progress {
+					> path:last-child {
+						stroke: var(--jsColor);
+					}
+				}
+			}
+			&.dart {
+				.circle-progress {
+					> path:last-child {
+						stroke: var(--dartColor);
+					}
+				}
+			}
+			&.csharp {
+				.circle-progress {
+					> path:last-child {
+						stroke: var(--csharpColor);
+					}
+				}
+			}
+			&.swift {
+				.circle-progress {
+					> path:last-child {
+						stroke: var(--swiftColor);
+					}
+				}
+			}
+			&.php {
+				.circle-progress {
+					> path:last-child {
+						stroke: var(--phpColor);
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 920px) {
+	.skills-page {
+		.skill-area {
+			> section {
+				width: 100%;
+			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.skills-page {
+		.skill-area {
+			> section {
+				text-align: center;
+
+				.skill-info {
+					float: none;
+					margin-top: 0px;
+					margin-bottom: 30px;
+					padding-left: 0;
+					width: 100%;
+				}
+	
+				.circle-area {
+					float: none;
+					margin: auto;
+				}
+			}
+		}
+	}
+}

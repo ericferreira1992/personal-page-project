@@ -1,0 +1,33 @@
+<div  class="open-sources-page animated fadeIn">
+	<h2 class="mb-7">Principais repositórios</h2>
+	<div class="repositories">
+		<section @for="repository of repositories.main" [class]="repository.tecnology">
+			<h4>
+				<a [href]="repository.url" target="_blank">
+					{{repository.name}}
+				</a>
+			</h4>
+			<div>
+				<p>
+					<span>{{repository.description}}</span>
+				</p>
+			</div>
+		</section>
+	</div>
+
+	<h2 class="mt-7 mb-7">Outros repositórios</h2>
+	<div class="repositories">
+		<section @for="repository of repositories.others" [class]="repository.tecnology">
+			<h4>
+				<a [href]="repository.url" target="_blank">
+					{{repository.name}}
+				</a>
+			</h4>
+			<div>
+				<p>
+					<span>{{repository.description}}</span>
+				</p>
+			</div>
+		</section>
+	</div>
+</div>

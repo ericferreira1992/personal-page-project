@@ -1,0 +1,20 @@
+<div  class="contact-page">
+	<h1 class="mb-8">
+		Como falar
+		<span class="f-w-300">comigo</span>
+	</h1>
+
+    <ul>
+		<li @for="contact of contacts">
+			<div class="icon">
+				<img [src]="'assets/img/icons/' + contact.iconName + '.svg#dark'" [alt]="contact.name">
+			</div>
+			<div class="info">
+				<h4>{{contact.id}}</h4>
+				<a [href]="contact.url" target="_blank">
+					{{contact.name}}
+				</a>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,35 @@
+<div  class="public-page">
+	<header [class]="{ 'menu-expanded': menuExpanded }">
+		<img class="photo" src="assets/img/photo.jpg" alt="eric">
+		<div class="header-name">
+			<h1>Eric Ferreira</h1>
+			<span>Desenvolvedor</span>
+			<ul class="social-medias">
+				<li @for="item of socialMediaItems">
+					<a [href]="item.url" target="_blank">
+						<img [src]="'assets/img/icons/' + item.imgName + '.svg#dark'" [alt]="item.name">
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="header-menu-toggle" (click)="toggleMenu()">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="header-menu">
+			<ul>
+				<li @for="let item of menu.items" [class]="{ 'actived': routePath === item.path }">
+					<a [href]="item.path" (click)="onMenuItemClick()">
+						{{item.text}}
+					</a>
+				</li>
+				<button class="login-button" (click)="isLogged ? logout() : login()" [title]="isLogged ? 'Sair' : 'Login'">
+					<img [src]="'assets/img/icons/' + (isLogged ? 'logout' : 'key') + '.svg#dark'"/>
+				</button>
+			</ul>
+		</div>
+	</header>
+
+	<nimble-router class="public-content"></nimble-router>
+</div>

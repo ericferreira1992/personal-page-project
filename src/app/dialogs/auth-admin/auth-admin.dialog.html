@@ -1,0 +1,56 @@
+<div  class="auth-admin-dialog">
+    <form [form]="form" (submit)="onSubmit()">
+		<div class="header">
+			<h3>
+				Área administrativa
+				<button type="button" class="btn only-icon float-right ml-6 opacity-70 opacity-hover-100" (click)="dialogRef.close(false)" title="Fechar">
+					<img class="d-block" src="assets/img/icons/close.svg#dark" width="20" alt="close">
+				</button>
+			</h3>
+			<p class="mt-2">Informe suas credenciais abaixo:</p>
+		</div>
+
+		<div class="form-group">
+			<label>Email</label>
+			<input form-field-name="email" type="text" class="form-control" [disabled]="loading"/>
+			<span @if="form.get('email').hasError('required')" class="text-error pt-1">
+				Campo obrigatório
+			</span>
+			<span @if="!form.get('email').hasError('required') && form.get('email').hasError('email')" class="text-error pt-1">
+				E-mail inválido
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Senha</label>
+			<input form-field-name="password" type="password" class="form-control" [disabled]="loading"/>
+			<span @if="form.get('password').hasError('required')" class="text-error pt-1">
+				Campo obrigatório
+			</span>
+		</div>
+	
+		<p @if="errorMsg" class="text-error">
+			{{errorMsg}}
+		</p>
+	
+		<div class="footer">
+			<button class="btn primary w-100" [class]="{ 'disabled': loading }">
+				{{ loading ? 'Enviando dados...' : 'Entrar' }}
+			</button>
+
+			<div class="social-buttons">
+				<button type="button" class="social-btn fb w-100" (click)="doAuth('fb')">
+					<img src="assets/img/social/facebook.svg" alt="Facebook"/>
+					<span>Continiuar com <strong>Facebook</strong></span>
+				</button>
+				<button type="button" class="social-btn gog w-100" (click)="doAuth('goo')">
+					<img src="assets/img/social/google.svg" alt="Google"/>
+					<span>Continiuar com <strong>Google</strong></span>
+				</button>
+				<button type="button" class="social-btn gh w-100" (click)="doAuth('gh')">
+					<img src="assets/img/social/github.svg" alt="Gihub" class="mr-4"/>
+					<span>Continiuar com <strong>Github</strong></span>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

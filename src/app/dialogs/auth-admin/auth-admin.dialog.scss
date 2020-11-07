@@ -1,0 +1,20 @@
+.auth-admin-dialog {
+
+	.header {
+		margin-bottom: 20px;
+	}
+
+	> p {
+		font-size: 14px;
+	}
+
+	.footer {
+		margin-top: 20px;
+	}
+
+	.social-buttons {
+		margin-top: 20px;
+		padding-top: 5px;
+		border-top: 1px var(--tertiaryColor) solid;
+	}
+}

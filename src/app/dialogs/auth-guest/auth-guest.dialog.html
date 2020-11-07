@@ -1,0 +1,31 @@
+<div  class="auth-guest-dialog">
+    <div class="header">
+		<h3>
+			Autenticação necessária
+			<button class="btn only-icon float-right opacity-70 opacity-hover-100" (click)="dialogRef.close(false)" title="Fechar">
+				<img class="d-block" src="assets/img/icons/close.svg#dark" width="20" alt="close">
+			</button>
+		</h3>
+		<p class="mt-2">Para continuar, você precisar fazer login por uma destas formas:</p>
+		
+	</div>
+
+	<p @if="errorMsg" class="text-error mt-6">
+		{{errorMsg}}
+	</p>
+
+	<div class="social-buttons">
+		<button class="social-btn fb w-100" (click)="doAuth('fb')">
+			<img src="assets/img/social/facebook.svg" alt="Facebook"/>
+			<span>Continiuar com <strong>Facebook</strong></span>
+		</button>
+		<button class="social-btn gog w-100" (click)="doAuth('goo')">
+			<img src="assets/img/social/google.svg" alt="Google"/>
+			<span>Continiuar com <strong>Google</strong></span>
+		</button>
+		<button class="social-btn gh w-100" (click)="doAuth('gh')">
+			<img src="assets/img/social/github.svg" alt="Gihub" class="mr-4"/>
+			<span>Continiuar com <strong>Github</strong></span>
+		</button>
+	</div>
+</div>

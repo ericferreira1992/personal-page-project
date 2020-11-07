@@ -1,0 +1,19 @@
+.confirm-dialog {
+	.footer {
+		display: table;
+		width: 100%;
+
+		> button {
+			float: left;
+
+			&:first-child {
+				width: calc(50% - 10px);
+				margin-right: 10px;
+			}
+			&:last-child {
+				width: calc(50% - 10px);
+				margin-left: 10px;
+			}
+		}
+	}
+}

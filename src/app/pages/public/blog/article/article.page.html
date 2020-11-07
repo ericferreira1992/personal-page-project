@@ -1,0 +1,131 @@
+<div  class="article-page">
+	<div @if="loading" class="loading">
+		Carregando artigo...
+	</div>
+	<article @if="!loading" class="animated fadeIn">
+		<h1>
+			{{article.title}}
+		</h1>
+		<div class="author">
+			<div class="img">
+				<img [src]="article.authorPhotoUrl" />
+			</div>
+			<div class="info">
+				<p class="mb-0 f-w-600">
+					{{article.authorName}}
+				</p>
+				<p class="date mb-0">
+					<span class="f-w-500">Publicado em</span>: {{article.createDate.toLocaleString()}}
+				</p>
+				<p @if="article.updatedDate" class="date mb-0">
+					<span class="f-w-500">Última atualização</span>: {{article.updatedDate.toLocaleString()}}
+				</p>
+			</div>
+		</div>
+		<p [html]="article.content">
+		</p>
+	</article>
+
+	<div @if="!loading" class="comments animated fadeIn">
+		<h3>Comentários</h3>
+
+		<div @if="commentsLoading" class="loading">
+			Carregando...
+		</div>
+		<ul @if="!commentsLoading && comments.length > 0" class="animated fadeIn">
+			<li @for="comment of comments" [style]="comment.anyLoading ? 'opacity: .6' : null">
+				<div class="d-table-cell va-top">
+					<img [src]="comment.authorPhotoUrl" />
+				</div>
+				<div class="d-table-cell va-top pl-4">
+					<div class="comment-header">
+						<p class="mt-3 mb-0">
+							<strong>{{comment.authorName}}</strong>
+							- {{comment.createDate.toLocaleString()}}
+						</p>
+					</div>
+					<p class="mt-5 mb-1" [html]="comment.content"></p>
+					<ul class="comments-footer">
+						<li>
+							<a href="#" (click)="toggleLike(comment)" [class]="{ 'disabled': comment.anyLoading }">
+								<span @if="comment.likes.length > 0">({{comment.likes.length}})</span>
+								{{getUserLikeOfComment(comment) != null ? 'Descurtir' : 'Curtir'}}
+							</a>
+						</li>
+						<li>
+							<a href="#" (click)="toggleSubComments(comment)" [class]="{ 'disabled': comment.anyLoading }">
+								<span @if="comment.quantityComments === 0">Responder</span>
+								<span @if="comment.quantityComments > 0">({{comment.quantityComments}}) Respostas</span>
+							</a>
+						</li>
+						<li @if="canRemoveComment(comment)">
+							<a href="#" (click)="removeComment(comment)" [class]="{ 'disabled': comment.anyLoading }">Excluir</a>
+						</li>
+					</ul>
+					<div @if="comment.showSubcomments" class="comments animated fadeIn">
+						<div @if="comment.loadingSubcomments" class="loading">
+							Carregando...
+						</div>
+						<ul @if="!comment.loadingSubcomments && comment.subComments.length > 0" class="animated fadeIn">
+							<li @for="subComment of comment.subComments" [style]="subComment.anyLoading ? 'opacity: .6' : null">
+								<div class="d-table-cell va-top">
+									<img [src]="subComment.authorPhotoUrl" />
+								</div>
+								<div class="d-table-cell va-top pl-4">
+									<div class="comment-header">
+										<p class="mt-3 mb-0">
+											<strong>{{subComment.authorName}}</strong>
+											- {{subComment.createDate.toLocaleString()}}
+										</p>
+									</div>
+									<p class="mt-5 mb-1" [html]="subComment.content"></p>
+									<ul class="comments-footer">
+										<li>
+											<a href="#" (click)="toggleLike(subComment)" [class]="{ 'disabled': subComment.anyLoading }">
+												<span @if="subComment.likes.length > 0">({{subComment.likes.length}})</span>
+												{{getUserLikeOfComment(subComment) != null ? 'Descurtir' : 'Curtir'}}
+											</a>
+										</li>
+										<li @if="canRemoveComment(subComment)">
+											<a href="#" (click)="removeComment(subComment)" [class]="{ 'disabled': subComment.anyLoading }">Excluir</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+				
+						<form @if="!comment.loadingSubcomments" [form]="comment.form" (submit)="onCommentSubmit(comment.id)" class="mt-2">
+							<div class="form-group">
+								<textarea class="form-control" form-field-name="content" placeholder="Deixar um comentário" maxlength="124" [disabled]="comment.addingSubComment"></textarea>
+								<span @if="comment.form.get('content').hasError('required')" class="text-error mt-2">
+									Escreva algum cometário para enviar.
+								</span>
+								<span @if="!comment.form.get('content').hasError('required') && comment.form.get('content').hasError('minLength')" class="text-error mt-2">
+									Escreva ao menos {{comment.form.get('content').errors.minLength}} caracteres
+								</span>
+								<button class="btn float-right" [disabled]="!comment.form.isValid || comment.addingSubComment">
+									{{comment.addingSubComment ? 'Enviando...' : 'Enviar'}}
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+		<form @if="!commentsLoading" [form]="commentForm" (submit)="onCommentSubmit()">
+			<div class="form-group">
+				<textarea class="form-control" form-field-name="content" placeholder="Deixar um comentário" maxlength="124" [disabled]="addingCommment"></textarea>
+				<span @if="commentForm.get('content').hasError('required')" class="text-error mt-2">
+					Escreva algum cometário para enviar.
+				</span>
+				<span @if="!commentForm.get('content').hasError('required') && commentForm.get('content').hasError('minLength')" class="text-error mt-2">
+					Escreva ao menos {{commentForm.get('content').errors.minLength}} caracteres
+				</span>
+				<button class="btn float-right" [disabled]="!commentForm.isValid || addingCommment">
+					{{addingCommment ? 'Enviando...' : 'Enviar'}}
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

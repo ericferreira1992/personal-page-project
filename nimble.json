@@ -1,0 +1,23 @@
+{
+    "pre-render": {
+        "enabled": true,
+        "routes": [
+			"/",
+			"/blog",
+			"/about-me",
+			"/contact",
+			"/open-sources",
+			"/skills"
+        ]
+    },
+    "vendors": {
+        "js": [
+		],
+        "css": [
+			"node_modules/animate.css/animate.min.css",
+			"node_modules/quill/dist/quill.core.css",
+			"node_modules/quill/dist/quill.snow.css",
+            "src/style.scss"
+        ]
+    }
+}

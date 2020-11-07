@@ -1,0 +1,42 @@
+<div  class="blog-page">
+	<div @if="loading" class="loading">
+		Carregando artigos...
+	</div>
+
+	<ul @if="!loading && adminIsLogged" class="admin-blog-menu">
+		<li @for="item of adminMenu">
+			<a [href]="item.path">{{item.name}}</a>
+		</li>
+	</ul>
+
+	<div @if="!loading" class="articles">
+		<article @for="article of articles" class="animated fadeIn">
+			<h4>
+				<a [href]="article.isExtenal ? article.externalUrl : ('blog/article/' + article.id)" [target]="article.externalUrl ? '_blank' ? ''">
+					{{article.title}}
+				</a>
+			</h4>
+			<div>
+				<div class="author">
+					<div class="img">
+						<img [src]="article.authorPhotoUrl" />
+					</div>
+					<div class="info">
+						<p class="mb-0 f-w-600">
+							{{article.authorName}}
+						</p>
+						<p class="date mb-0">
+							{{article.createDate.toLocaleDateString()}}
+						</p>
+					</div>
+				</div>
+				<p>
+					<span [html]="article.preContent"></span>
+					<a [href]="article.isExtenal ? article.externalUrl : ('blog/article/' + article.id)" [target]="article.isExtenal ? '_blank' ? ''">
+						Ler mais
+					</a>
+				</p>
+			</div>
+		</article>
+	</div>
+</div>

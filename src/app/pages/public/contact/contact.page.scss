@@ -1,0 +1,49 @@
+.contact-page {
+
+	> h1 {
+		> span {
+			display: block;
+			margin-top: -8px;
+			font-size: 25px;
+		}
+	}
+
+	> ul {
+		list-style: none;
+		padding-left: 0;
+
+		> li {
+			display: table;
+			padding-bottom: 15px;
+
+			.icon {
+				display: table-cell;
+				vertical-align: middle;
+				width: 30px;
+				
+				> img {
+					display: block;
+					width: inherit;
+					height: auto;
+				}
+			}
+			
+			.info {
+				display: table-cell;
+				vertical-align: middle;
+				padding-left: 20px;
+
+				> h4 {
+					font-weight: 500;
+				}
+
+				> a {
+					font-size: 14px;
+					margin-top: -2px;
+					display: block;
+				}
+			}
+
+		}
+	}
+}

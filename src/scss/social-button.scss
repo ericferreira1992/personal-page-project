@@ -1,0 +1,47 @@
+.social-buttons {
+	width: 100%;
+	margin: auto;
+}
+
+.social-btn {
+	border: 1px solid transparent;
+	padding: 10px;
+	font-size: 14px;
+	border-radius: 4px;
+	margin-top: 15px;
+	opacity: 0.9;
+	cursor: pointer;
+	box-shadow: inset 0 0 0 1px rgba(#fff, 0.2);
+
+	> * {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	> img {
+		width: 30px;
+	}
+
+	&.fb {
+		color: #ffffff;
+		background-color: #4267b2;
+		border-color: darken(#4267b2, 5);
+	}
+
+	&.gog {
+		color: #444444;
+		background-color: #eaeaea;
+		border-color: darken(#eaeaea, 5);
+		box-shadow: inset 0 0 0 1px rgba(#fff, 0.5);
+	}
+
+	&.gh {
+		color: #ffffff;
+		background-color: #444444;
+		border-color: darken(#444444, 5);
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,68 @@
+<div class="skills-page animated fadeIn">
+	<h1>
+		<strong>Linguagens</strong>
+		<p class="f-w-300">níveis de domínio</p>
+	</h1>
+	<div class="skill-area">
+		<section @for="language of languanges" [class]="language.id">
+			<div class="circle-area">
+				<svg class="circle-progress" viewbox="0 0 100 100" stroke-dasharray="{{(251.2 * (language.percentage/100)) + ',251.2'}}">
+					<path class="background" fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
+					<path fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
+				</svg>
+				<p>
+					<img [src]="'assets/img/languages/' + language.id + '.svg'" alt=""/>
+					<span>{{language.percentage}}%</span>
+				</p>
+			</div>
+			<div class="skill-info">
+				<h4 class="f-w-500">{{language.name}}</h4>
+				<p>{{language.description}}</p>
+			</div>
+		</section>
+	</div>
+	
+	<h1 class="mt-8">
+		<strong>Tecnologias</strong>
+		<p class="f-w-300">e outros</p>
+	</h1>
+	<div class="skill-area">
+		<section @for="technology of technologies">
+			<div class="circle-area">
+				<svg class="circle-progress grey" viewbox="0 0 100 100" stroke-dasharray="{{(251.2 * (technology.percentage/100)) + ',251.2'}}">
+					<path class="background" fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
+					<path fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
+				</svg>
+				<p>
+					<span>{{technology.percentage}}%</span>
+				</p>
+			</div>
+			<div class="skill-info">
+				<h4 class="f-w-500">{{technology.name}}</h4>
+				<p>{{technology.description}}</p>
+			</div>
+		</section>
+	</div>
+	
+	<h1 class="mt-8">
+		<strong>Caraterísticas</strong>
+		<p class="f-w-300">e diferenciais</p>
+	</h1>
+	<div class="skill-area">
+		<section @for="skill of skills">
+			<div class="circle-area">
+				<svg class="circle-progress grey" viewbox="0 0 100 100" stroke-dasharray="{{(251.2 * (skill.percentage/100)) + ',251.2'}}">
+					<path class="background" fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
+					<path fill="none" d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80"></path>
+				</svg>
+				<p>
+					<span>{{skill.percentage}}%</span>
+				</p>
+			</div>
+			<div class="skill-info">
+				<h4 class="f-w-500">{{skill.name}}</h4>
+				<p>{{skill.description}}</p>
+			</div>
+		</section>
+	</div>
+</div>

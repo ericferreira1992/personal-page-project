@@ -1,0 +1,13 @@
+<div  class="confirm-dialog">
+    <h3 class="color-title">Confirmação</h3>
+	<p class="mt-2 mb-6">{{text}}</p>
+	
+	<div class="footer pt-3">
+		<button class="btn" (click)="dialogRef.close(false)">
+			{{cancelText}}
+		</button>
+		<button class="btn primary" (click)="dialogRef.close(true)">
+			{{confirmText}}
+		</button>
+	</div>
+</div>

@@ -1,0 +1,158 @@
+@import 'src/scss/variables';
+
+/* ROOT VARIABLES */
+:root {
+	--repoTitleLeftBarColor: #{darken($secondaryColor, 5)};
+	--repoContentLeftBarColor: #{$secondaryColor};
+}
+
+.open-sources-page {
+
+	.repositories {
+		display: flex;
+		flex-wrap: wrap;
+		width: calc(100% + 50px);
+		margin: 0 -25px;
+
+		> section {
+			display: block;
+			width: 50%;
+			margin-bottom: 20px;
+			padding: 0 25px;
+
+			> h4 {
+				position: relative;
+				display: block;
+				border-left: 5px var(--repoTitleLeftBarColor) solid;
+				// border-left: 5px var(--repoTitleLeftBarColor) solid;
+				padding: 5px 0 6px 15px;
+				max-width: 550px;
+
+				> a {
+					color: var(--titleColor);
+					font-weight: 500;
+
+					&:hover {
+						color: var(--linkColor);
+					}
+				}
+					
+				&::before {
+					content: '';
+					display: block;
+					background-color: var(--textColor);
+					position: absolute;
+					border: 3px var(--backgroundColor) solid;
+					padding: 5px;
+					border-radius: 8px;
+					top: 12px;
+					left: -10px;
+				}
+					
+				&::after {
+					display: block;
+					color: var(--textColor);
+					font-size: 11px;
+					font-weight: 500;
+					margin-top: -2px;
+					opacity: .5;
+					letter-spacing: 2px;
+				}
+			}
+			
+			> div {
+				border-left: 5px var(--repoContentLeftBarColor) solid;
+
+				> p {
+					display: block;
+					padding: 6px 0 5px 15px;
+					margin: 0;
+					font-size: 14px;
+					text-align: justify;
+					color: var(--textColor);
+
+					> a {
+						float: right;
+						font-size: 15px;
+						font-weight: 500;
+					}
+				}
+			}
+
+			&.ts {
+				> h4 {
+					&::before {
+						background-color: $tsColor;
+					}
+					&::after {
+						content: 'typescript';
+					}
+				}
+			}
+			&.js {
+				> h4 {
+					&::before {
+						background-color: $jsColor;
+					}
+					&::after {
+						content: 'javascript';
+					}
+				}
+			}
+			&.dart {
+				> h4 {
+					&::before {
+						background-color: $dartColor;
+					}
+					&::after {
+						content: 'dart';
+					}
+				}
+			}
+			&.csharp {
+				> h4 {
+					&::before {
+						background-color: $csharpColor;
+					}
+					&::after {
+						content: 'csharp';
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 900px) {
+	.open-sources-page {
+		.repositories {
+			> section {
+				width: 100%;
+			}
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	.blopen-sourcesg-page {
+		.repositories {
+			> section {
+				padding: 0 25px;
+	
+				> h4 {
+					border-left: none;
+					padding: 5px 0 6px 0;
+				}
+				
+				> div {
+					border-left: none;
+					
+					> p {
+						display: block;
+						padding-left: 0;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+.btn {
+	border: 1px transparent solid;
+	background: var(--secondaryColor);
+	border-radius: 4px;
+	padding: 8px 20px;
+	font-size: 15px;
+	font-family: 'Montserrat', sans-serif;
+	color: var(--titleColor);
+	text-align: center;
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+
+	&.transparent {
+		background-color: transparent;
+	}
+
+	&.only-icon {
+		padding: 5px;
+		background-color: transparent;
+	}
+	
+	&.primary {
+		background-color: var(--primaryColor);
+		color: #FFF;
+
+		&.with-icon {
+		}
+	}
+	
+	&.primary-out {
+		background-color: transparent;
+		color: var(--primaryColor);
+		border-color: var(--primaryColor);
+
+		&.with-icon {
+		}
+	}
+
+	&:disabled,
+	&.disabled {
+		opacity: .6;
+	}
+}

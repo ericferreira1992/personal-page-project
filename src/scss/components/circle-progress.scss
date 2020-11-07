@@ -1,0 +1,25 @@
+.circle-progress {
+	width: 140px;
+	transition-duration: 300ms;
+
+	> path {
+		stroke: $primaryColor;
+		stroke-linecap: round;
+		stroke-width: 3px;
+
+		&.background {
+			position: absolute;
+			z-index: 0;
+			stroke-width: 3px;
+			stroke-dasharray: 251.2,251.2;
+			stroke: rgba(0,0,0, .1);
+		}
+	}
+
+	&.grey {
+		> path:last-child {
+			stroke: var(--textColor);
+			opacity: .75;
+		}
+	}
+}
