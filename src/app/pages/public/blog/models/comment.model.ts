@@ -6,7 +6,7 @@ export class Comment {
 	public parentId: string;
 	public articleId: string;
 	public authorName: string;
-	public authorPhotoURL: string;
+	public authorPhotoUrl: string;
 	public authorEmail: string;
 	public content: string;
 	public createDate? = new Date();

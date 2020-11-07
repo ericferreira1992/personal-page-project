@@ -12,7 +12,7 @@
 	<div @if="!loading" class="articles">
 		<article @for="article of articles" class="animated fadeIn">
 			<h4>
-				<a [href]="article.isExtenal ? article.externalUrl : ('blog/article/' + article.id)" [target]="article.externalUrl ? '_blank' ? ''">
+				<a [href]="article.isExtenal ? article.externalUrl : ('blog/article/' + article.id)" [target]="article.isExtenal ? '_blank' : ''">
 					{{article.title}}
 				</a>
 			</h4>
@@ -32,7 +32,7 @@
 				</div>
 				<p>
 					<span [html]="article.preContent"></span>
-					<a [href]="article.isExtenal ? article.externalUrl : ('blog/article/' + article.id)" [target]="article.isExtenal ? '_blank' ? ''">
+					<a [href]="article.isExtenal ? article.externalUrl : ('blog/article/' + article.id)" [target]="article.isExtenal ? '_blank' : ''">
 						Ler mais
 					</a>
 				</p>

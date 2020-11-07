@@ -1,4 +1,5 @@
-import { NimbleApp } from '@nimble-ts/core';
+import { enviroment, NimbleApp } from '@nimble-ts/core';
+import '@nimble-ts/core/plugins/google-analytics';
 import { ROUTES } from './app/routes';
 import { ArticleService } from './app/services/article.service';
 import { FireBaseService } from './app/services/firebase.service';
@@ -14,4 +15,8 @@ NimbleApp.config({
 		FirebaseAuthService,
 		ArticleService,
 	]
-}).start();
+}).pluginGoogleAnalytics({
+	id: 'UA-137851769-1',
+	disabled: !enviroment.production
+})
+.start();
